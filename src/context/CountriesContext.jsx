@@ -6,6 +6,8 @@ export const CountriesContext = createContext();
 export const CountriesProvider = ({ children }) => {
     const [countries, setCountries] = useState([]);
     const [loading, setLoading] = useState(true);
+    const [error, setError] = useState(null);
+
     const regions = useMemo(() => {
         if (loading) return [];
 
@@ -18,11 +20,16 @@ export const CountriesProvider = ({ children }) => {
         fetchCountries().then(data => {
             setCountries(data);
             setLoading(false);
+            setError(null);
+        })
+        .catch(err => {
+            console.log(err);
+            setError(err);
         });
     }, [])
 
     return (
-        <CountriesContext.Provider value={{ countries, regions, loading }}>
+        <CountriesContext.Provider value={{ countries, regions, loading, error }}>
             {children}
         </CountriesContext.Provider>
     );

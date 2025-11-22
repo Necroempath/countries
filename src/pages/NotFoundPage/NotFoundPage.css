@@ -1,0 +1,22 @@
+.notfound {
+    color: #333;
+    margin-block: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.notfound a {
+    color: #f0f0f0;
+    background-color: #333;
+    border-radius: 20px;
+    padding: 5px 10px;
+    margin: 10px;
+    width: fit-content;
+    transition: all .2s ease;
+}
+
+.notfound a:hover {
+    color: #333;
+    background-color: transparent;
+}
